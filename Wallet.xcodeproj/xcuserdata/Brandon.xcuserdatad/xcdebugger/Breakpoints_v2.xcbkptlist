@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Wallet/WalletViewController.swift"
+            timestampString = "519188438.561528"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "WalletViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Wallet.WalletViewController.walletView.getter : Swift.Optional&lt;Wallet.WalletView&gt;"
+                  moduleName = "Wallet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brandonmowat/Developer/SwiftCode/Wallet/Wallet/WalletViewController.swift"
+                  timestampString = "519188552.147527"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "35">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Wallet.WalletViewController.walletView.setter : Swift.Optional&lt;Wallet.WalletView&gt;"
+                  moduleName = "Wallet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brandonmowat/Developer/SwiftCode/Wallet/Wallet/WalletViewController.swift"
+                  timestampString = "519188552.150918"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "65">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Wallet.WalletViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Wallet.WalletViewController"
+                  moduleName = "Wallet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brandonmowat/Developer/SwiftCode/Wallet/Wallet/WalletViewController.swift"
+                  timestampString = "519188552.153955"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "70">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Wallet.WalletViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Wallet.WalletViewController&gt;"
+                  moduleName = "Wallet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brandonmowat/Developer/SwiftCode/Wallet/Wallet/WalletViewController.swift"
+                  timestampString = "519188552.156728"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
