@@ -56,10 +56,10 @@ class WalletView: UIView, UIScrollViewDelegate {
         scrollView.showsVerticalScrollIndicator = true
         
         scrollView.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin, .flexibleHeight, .flexibleWidth]
-        scrollView.frame = bounds
+        scrollView.frame = CGRect(x: bounds.minX, y: bounds.minY + contentInsetTop, width: bounds.width, height: bounds.height - contentInsetTop)
         
         // 100 pt space up top
-        scrollView.contentInset = UIEdgeInsets(top: self.contentInsetTop, left: 0, bottom: 0, right: 0)
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
     }
     
@@ -95,7 +95,7 @@ class WalletView: UIView, UIScrollViewDelegate {
             
             let cardView = self.cards[cardViewIndex]
             
-            var cardViewFrame = CGRect(x: self.cardWidthDiff/2, y: cardViewYPoint, width: self.cardWidth!, height: self.cardHeight!)
+            let cardViewFrame = CGRect(x: self.cardWidthDiff/2, y: cardViewYPoint, width: self.cardWidth!, height: self.cardHeight!)
             
             UIView.animate(withDuration: 0.3, animations: {
                 cardView.frame = cardViewFrame
@@ -106,6 +106,7 @@ class WalletView: UIView, UIScrollViewDelegate {
         }
     }
     
+    //
     func makeStackLayout() {
         
         scrollView.isScrollEnabled = true
@@ -165,7 +166,6 @@ class WalletView: UIView, UIScrollViewDelegate {
     
     func updateGrabbedCardView(offset: CGFloat, card: CardView) {
         card.frame.origin.y = offset + 60
-        
     }
     
     func checkCardPositions() {

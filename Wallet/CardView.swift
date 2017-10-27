@@ -48,9 +48,24 @@ class CardView: UIView {
         case .changed:
             updateGrabbedCardViewOffset(gestureRecognizer: gestureRecognizer)
         case .ended:
-            walletView?.animateToStackLayout()
+            panGestureEnded(gestureRecognizer: gestureRecognizer)
         default:
             updateGrabbedCardViewOffset(gestureRecognizer: gestureRecognizer)
+        }
+    }
+    
+    func panGestureEnded(gestureRecognizer: UIPanGestureRecognizer) {
+        let offset = gestureRecognizer.translation(in: walletView).y
+        if (abs(offset) > 100) {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.walletView?.updateGrabbedCardView(offset: 1000, card: self)
+            }, completion: { finished in
+                self.walletView?.animateToStackLayout()
+            })
+        } else {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.walletView?.updateGrabbedCardView(offset: 0, card: self)
+            })
         }
     }
     
