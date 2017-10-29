@@ -14,7 +14,7 @@ class WalletView: UIView, UIScrollViewDelegate {
     var cardWidth: CGFloat?
     var cardHeight: CGFloat?
     let cardWidthDiff: CGFloat = CGFloat(30)
-    let contentInsetTop: CGFloat = CGFloat(60)
+    let contentInsetTop: CGFloat = CGFloat(20)
     let animationDuration: Double = 1.0
     let cardSpacing: CGFloat = CGFloat(100)
     
@@ -47,6 +47,8 @@ class WalletView: UIView, UIScrollViewDelegate {
         
         addSubview(scrollView)
         
+        scrollView.layer.zPosition = 0;
+        
         scrollView.clipsToBounds = false
         
         scrollView.isExclusiveTouch = true
@@ -64,22 +66,25 @@ class WalletView: UIView, UIScrollViewDelegate {
     }
     
     func makePresentationLayout(card: CardView) {
-        var offset: CGFloat = 0
+        var offset: CGFloat = -100
         self.scrollView.isScrollEnabled = false
         card.addPanGesture()
+        
         for cardViewIndex in 0..<self.cards.count {
             
             let cardView = self.cards[cardViewIndex]
             
             if (cardView == card) {
-                UIView.animate(withDuration: 0.3, animations: {
-                    cardView.frame.origin.y = 100 + self.scrollView.contentOffset.y
+                let animatePresentedCard = UIViewPropertyAnimator(duration: 0.5, dampingRatio: 1, animations: {
+                    cardView.frame.origin.y = self.scrollView.contentOffset.y
                 })
+                animatePresentedCard.startAnimation()
             } else {
                 offset += 20
-                UIView.animate(withDuration: 0.3, animations: {
-                    cardView.frame.origin.y = self.frame.height + self.scrollView.contentOffset.y - 50 + offset
+                let animateHiddenCards = UIViewPropertyAnimator(duration: 0.5, dampingRatio: 1, animations: {
+                    cardView.frame.origin.y = self.frame.height + self.scrollView.contentOffset.y + offset
                 })
+                animateHiddenCards.startAnimation()
             }
             
         }
@@ -97,9 +102,11 @@ class WalletView: UIView, UIScrollViewDelegate {
             
             let cardViewFrame = CGRect(x: self.cardWidthDiff/2, y: cardViewYPoint, width: self.cardWidth!, height: self.cardHeight!)
             
-            UIView.animate(withDuration: 0.3, animations: {
+            let animateCardPosition = UIViewPropertyAnimator(duration: 0.5, dampingRatio: 1, animations: {
                 cardView.frame = cardViewFrame
             })
+            
+            animateCardPosition.startAnimation()
             
             cardViewYPoint += self.cardSpacing
             
@@ -110,12 +117,6 @@ class WalletView: UIView, UIScrollViewDelegate {
     func makeStackLayout() {
         
         scrollView.isScrollEnabled = true
-        
-        let zeroRectConvertedFromWalletView: CGRect = {
-            var rect = convert(CGRect.zero, to: scrollView)
-            rect.origin.y += scrollView.contentInset.top
-            return rect
-        }()
         
         let stretchingDistanse: CGFloat? = {
             
@@ -165,7 +166,7 @@ class WalletView: UIView, UIScrollViewDelegate {
     
     
     func updateGrabbedCardView(offset: CGFloat, card: CardView) {
-        card.frame.origin.y = offset + 60
+        card.frame.origin.y = offset + scrollView.contentOffset.y
     }
     
     func checkCardPositions() {

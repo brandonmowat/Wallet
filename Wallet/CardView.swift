@@ -35,11 +35,13 @@ class CardView: UIView {
     let tapGesture = UITapGestureRecognizer()
     let panGesture = UIPanGestureRecognizer()
     
+    @objc
     func tapped() {
         print("Card tapped")
         walletView?.makePresentationLayout(card: self)
     }
     
+    @objc
     func panned(gestureRecognizer: UIPanGestureRecognizer) {
         print("Panned")
         switch gestureRecognizer.state {
@@ -57,15 +59,18 @@ class CardView: UIView {
     func panGestureEnded(gestureRecognizer: UIPanGestureRecognizer) {
         let offset = gestureRecognizer.translation(in: walletView).y
         if (abs(offset) > 100) {
-            UIView.animate(withDuration: 0.3, animations: {
+            let animation = UIViewPropertyAnimator(duration: 0.5, dampingRatio: 1, animations: {
                 self.walletView?.updateGrabbedCardView(offset: 1000, card: self)
-            }, completion: { finished in
+            })
+            animation.addCompletion({ _ in
                 self.walletView?.animateToStackLayout()
             })
+            animation.startAnimation()
         } else {
-            UIView.animate(withDuration: 0.3, animations: {
+            let animation = UIViewPropertyAnimator(duration: 0.5, dampingRatio: 1, animations: {
                 self.walletView?.updateGrabbedCardView(offset: 0, card: self)
             })
+            animation.startAnimation()
         }
     }
     
@@ -75,7 +80,6 @@ class CardView: UIView {
         walletView?.updateGrabbedCardView(offset: offset, card: self)
     }
         
-    
     func setupGestures() {
         tapGesture.addTarget(self, action: #selector(tapped))
         panGesture.addTarget(self, action: #selector(panned))
